@@ -11,7 +11,7 @@ void getToken(char *userPrompt)
 	const char *delimiter = " ";
 	char **tokens = malloc(20 * sizeof(char *));
 	char *token = strtok(userPrompt, delimiter);
-	int i = 0;
+	int i = 0, j = 0;
 
 	while (token != NULL && i < 20)
 	{
@@ -25,4 +25,10 @@ void getToken(char *userPrompt)
 	if (tokens[0] != NULL)
 		execute(tokens);
 
+	for (j = 0; j < i; j++)
+	{
+		free(tokens[j]);
+	}
+
+	free(tokens);
 }
