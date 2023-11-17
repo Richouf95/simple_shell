@@ -22,9 +22,10 @@ void execute(char **arg)
 	{
 		if (execve(arg[0], arg, NULL) == -1)
 			perror("./shell");
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		wait(&status);
+		waitpid(pid, &status, 0);
 	}
 }
