@@ -11,21 +11,22 @@ int main(void)
 	size_t n = 0;
 	int bufferSize;
 
-	while (1)
+	printf("#cisfun$ ");
+
+	while (getline(&buffer, &n, stdin) != EOF)
 	{
-		printf("#cisfun$ ");
-
-		if (getline(&buffer, &n, stdin) != -1)
+		bufferSize = strlen(buffer);
+		buffer[bufferSize - 1] = '\0';
+		if (strcmp(buffer, "exit") == 0)
 		{
-			bufferSize = strlen(buffer);
-			if (bufferSize > 0 && buffer[bufferSize - 1] == '\n')
-				buffer[bufferSize - 1] = '\0';
-
-			getToken(buffer);
+			free(buffer);
+			exit(0);
 		}
-		else
-			break;
+		getToken(buffer);
+		printf("#cisfun$ ");
 	}
+
+	free(buffer);
 
 	printf("\n");
 
