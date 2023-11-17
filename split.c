@@ -21,7 +21,7 @@ void getToken(char *userPrompt)
 	}
 
 	tokens[i] = NULL;
-	
+
 	if (strcmp(tokens[0], "exit") == 0)
 	{
 		for (j = 0; j < i; j++)
